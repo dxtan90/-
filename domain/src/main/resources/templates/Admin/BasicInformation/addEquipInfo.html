@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新建装备信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/budgetAddInfo.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'warehouseManagement')"></div>
+<script language="JavaScript">
+    function check() {
+        if(frm.wpname.value==null ||frm.wpname.value===""){
+            alert("装备名称不能为空");
+            frm.wpname.focus();
+            return false;
+        }
+        if(frm.wpcode.value==null||frm.wpcode.value===""){
+            alert("装备编号不能为空");
+            frm.wpcode.focus();
+            return false;
+        }
+        if(frm.wptype.value==null||frm.wptype.value===""){
+            alert("装备类型不能为空");
+            frm.wptype.focus();
+            return false;
+        }
+        if(frm.wpmodel.value==null||frm.wpmodel.value===""){
+            alert("规格类型不能为空");
+            frm.wpmodel.focus();
+            return false;
+        }
+        if(frm.wpprice.value==null||frm.wpprice.value===""){
+            alert("装备单价不能为空");
+            frm.wpprice.focus();
+            return false;
+        }
+        alert("新建成功");
+        frm.submit();
+    }
+</script>
+<div id="addBudgetInfo" class="addBudgetInfo"  style="display:block;height: auto">
+    <div class="add_title"><span class="addBudgetInfo_title">新建装备信息</span></div>
+    <hr class = "new_line">
+    <div class="infoContent" >
+<!--from表单action接口值还没有填写-->
+<form name="frm" style="text-align: center" action="/Admin/basicInformation/addEquip" method="post">
+    <table style="border-collapse:separate; border-spacing: 10px;">
+        <tr class="addBudgetInfo_tr" >
+            <td class="addBudgetInfo_desc_td">装备名称：</td>
+            <td class="addBudgetInfo_value_td"><input type="text" name="zbname" ></td>
+        </tr>
+        <tr class="addBudgetInfo_tr">
+            <td class="addBudgetInfo_desc_td">装备编号：</td>
+            <td class="addBudgetInfo_value_td"><input type="text" name="zbid" ></td>
+        </tr>
+        <tr class="addBudgetInfo_tr">
+            <td class="addBudgetInfo_desc_td">装备类型：</td>
+            <td class="addBudgetInfo_value_td"><input type="text" name="zbkind"></td>
+        </tr>
+        <tr class="addBudgetInfo_tr" >
+            <td class="addBudgetInfo_desc_td">规格型号：</td>
+            <td class="addBudgetInfo_value_td"><input type="text" name="zbspec"></td>
+        </tr>
+        <tr class="addBudgetInfo_tr">
+            <td class="addBudgetInfo_desc_td">计量单位：</td>
+            <td class="addBudgetInfo_value_td"><input type="text" name="zbunit"></td>
+        </tr>
+    </table>
+    <hr class = "new_line">
+    <div class="SubmitOrRollback">
+        <button class="addInfoItems_submit">新建</button>
+        <a class="addInfoItems_submit" href="/Admin/basicInformation"><button style="height: 100%;width: 100%" type="button">取消</button></a>
+    </div>
+</form>
+    </div>
+</div>
+</body>
+</html>

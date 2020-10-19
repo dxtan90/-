@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.text.springboot.money.mapper.OutLayOut">
+
+    <select id="findLayOutById" resultType="Outlaycost" parameterType="Integer">
+        select * from OutLayCost where id = #{id};
+    </select>
+
+    <insert id="addLayOut" parameterType="Outlaycost">
+        insert into OutLayCost(cdate,itemid,csum,ryname,rynamel,cdescribe,memo) values(#{cdate},#{itemid},#{csum},#{ryname},#{rynamel},#{cdescribe},#{memo});
+    </insert>
+
+    <select id="findAllLayOut" resultType="Outlaycost">
+        select * from OutLayCost;
+    </select>
+
+    <select id="findLayOutByRyName" parameterType="String" resultType="Outlaycost">
+        select * from OutLayCost where ryname like #{name};
+    </select>
+
+    <select id="findAllRyName" resultType="String">
+        select ryname from OutLayCost group by ryname;
+    </select>
+
+
+    <select id="findLayOutByVo" parameterType="SelectVo" resultType="Outlaycost">
+        select * from OutLayCost where 1=1
+        <if test="time!='全部' and time!=null">
+            <if test="time=='近一个月'">
+                and DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= STR_TO_DATE(cdate,"%Y/%m/%d")
+            </if>
+            <if test="time=='近一个周'">
+                and DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= STR_TO_DATE(cdate,"%Y/%m/%d")
+            </if>
+
+        </if>
+        <if test="person!='全部' and person!=null">
+            and ryname=#{person}
+        </if>
+        <if test="inout=='只看出帐'">
+            limit #{startSize},10;
+        </if>
+        <if test="inout=='全部' and inout!=null">
+            limit #{startSize},#{findCount};
+        </if>
+    </select>
+
+    <select id="findAllCount" resultType="Integer">
+        select count(id) from OutLayCost;
+    </select>
+    <update id="updateLayOut" parameterType="Outlaycost">
+        update OutLayCost set cdate = #{cdate} , itemid = #{itemid} ,csum = #{csum},ryname = #{ryname},rynamel = #{rynamel},cdescribe=#{cdescribe},memo=#{memo} where id = #{id};
+    </update>
+
+    <delete id="deleteLayOut" parameterType="Integer">
+        delete from OutLayCost where id=#{id};
+    </delete>
+</mapper>

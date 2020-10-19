@@ -1,0 +1,85 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    width:960px;
+    height:600px;
+    border: black solid 1px;
+    margin: 0 auto;
+}
+.header{
+    width: 960px;
+    height:100px;
+    background: #00FFFF;
+    text-align: center;
+    border: black 1px solid;
+}
+.div_body{
+    width: 960px;
+    height: 500px;
+    display: flex;
+    border-collapse: collapse;
+}
+
+
+.left_table{
+    width: 320px;
+    height: 500px;
+    border:1px solid black;
+    border-collapse: collapse;
+}
+.right_div{
+    width: 640px;
+    height: 500px;
+}
+
+.tr_title{
+    height: 10%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.info_tr{
+    height: 10%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.td_info{
+    width: 40%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.td_data{
+    width: 60%;
+    border: 1px solid black;
+}
+
+.right_title{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right_area{
+    height: 443px;
+    width: 635px;
+    font-size: 16px;
+}
+
+.title_span{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.head_span{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.changeKey_a{
+    width: 100px;
+    height: 40px;
+}

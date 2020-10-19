@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加维修信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/ArmsRepairInfoAdd.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+
+    <script src="/webjars/jquery/3.5.1/jquery.js" type="text/javascript"></script>
+    <script src="/addJs/My97DatePicker/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'warehouseManagement')"></div>
+<form th:action="'/Admin/warehouseManagement/'+(${data}==null?'add':'update')" method="post">
+    <div class="ArmsRepairInfoAdd_box" style="height: auto;top: 200px;">
+        <div class="ArmsRepairInfoAdd_title">
+            添加维修信息
+        </div>
+        <hr class="new_line">
+        <input type="text" style="display: none" name="repid" th:value="${data}!=null?${data.getRepid()}:''" readonly="readonly">
+        <table class="ArmsRepairInfoAdd_table">
+            <tr class="aria_table_line">
+                <td class="aria_desc_td">装备编号：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="zbid" th:value="${data}!=null?${data.getZbid()}:''">
+                </td>
+            </tr>
+            <tr class="aria_table_line">
+                <td class="aria_desc_td">提交日期：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="postdate" th:value="${data}!=null?${data.getPostdate()}:''" onclick="WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'})" >
+                </td>
+            </tr>
+            <tr class="aria_table_line" th:if="${data}!=null">
+                <td class="aria_desc_td">维修日期：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="repairdate" th:value="${data}!=null?${data.getRepairdate()}:''" onclick="WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'})">
+                </td>
+            </tr>
+            <tr class="aria_table_line">
+                <td class="aria_desc_td">维修单位：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="unit" th:value="${data}!=null?${data.getUnit()}:''">
+                </td>
+            </tr>
+            <tr class="aria_table_line">
+                <td class="aria_desc_td">故障原因：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="reason" th:value="${data}!=null?${data.getReason()}:''">
+                </td>
+            </tr>
+            <tr class="aria_table_line">
+                <td class="aria_desc_td">维修状态：</td>
+                <td class="aria_value_td">
+                    <select name="status">
+                        <option th:selected="${data}!=null and ${data.getStatus()}=='待维修'">待维修</option>
+                        <option th:selected="${data}!=null and ${data.getStatus()}=='已送修'">已送修</option>
+                        <option th:selected="${data}!=null and ${data.getStatus()}=='维修完毕'">维修完毕</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr class="aria_table_line">
+                <td class="aria_desc_td">维修负责人：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="ryname" th:value="${data}!=null?${data.getRyname()}:''">
+                </td>
+            </tr>
+            <tr class="aria_table_line" th:if="${data}!=null">
+                <td class="aria_desc_td">维修验收人：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="rynamel"  th:value="${data}!=null?${data.getRynamel()}:''">
+                </td>
+            </tr>
+            <tr class="aria_table_line" th:if="${data}!=null">
+                <td class="aria_desc_td">维修金额：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="cost"  th:value="${data}!=null?${data.getCost()}:''">
+                </td>
+            </tr>
+            <tr class="aria_table_line" th:if="${data}!=null">
+                <td class="aria_desc_td">维修结果：</td>
+                <td class="aria_value_td">
+                    <input type="text" class="aria_input" name="result"  th:value="${data}!=null?${data.getResult()}:''">
+                </td>
+            </tr>
+        </table>
+        <hr class="new_line">
+        <div class="ariaResetSubmit">
+            <input class="re_main_submit" type="submit" value="确认">
+            <a href="/Admin/warehouseManagement/equipmentRepaired"  class="re_main_submit"><button type="button"  style="height: 100%;width: 100%">返回</button></a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

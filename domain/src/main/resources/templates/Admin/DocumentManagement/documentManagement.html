@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>装备资料管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/documentManagement.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'documentManagement')"></div>
+<div class="main">
+    <div class="title">装备资料管理</div>
+    <button class="bot botA"><a href="/Admin/documentManagement/addInfo">添加资料信息</a></button>
+    <button class="bot botA"><a href="/Admin/documentManagement/judgeInfo">资料借阅审核</a></button>
+    <div class="search">
+        <form action="/Admin/documentManagement/findArmsData" method="get" id="IDSearch">
+        输入资料编号：<input type="text" style="height: 25px; width: 180px" name="DataId"/>
+        <button class="search_button" onclick="$('#IDSearch').submit()" type="submit">搜 索</button>
+        </form>
+    </div>
+    <div class="mainTable mainTable1">
+        <table border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>资料名</th>
+                <th>资料分类</th>
+                <th>资料编号</th>
+                <th>数量</th>
+                <th>价格</th>
+                <th>描述</th>
+                <th colspan="2">操作</th>
+
+            </tr>
+            <tr th:each="d:${data}">
+                <td th:text="${d.getDataName()}">xxx</td>
+                <td th:text="${d.getTypeId()}">-5000</td>
+                <td th:text="${d.getDataNo()}">20200202</td>
+                <td th:text="${d.getICount()}">xxx</td>
+                <td th:text="${d.getIPrice()}">75000</td>
+                <td th:text="${d.getMemo()}"></td>
+                <td><a th:href="@{'/Admin/documentManagement/update?DataId='+${d.getDataNo()}}">修改</a></td>
+                <td><a th:href="@{'/Admin/documentManagement/deleteArmsData?DataNo='+${d.getDataNo()}}">删除</a></td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="mainTurn mainTurn1">
+    </div>
+</div>
+</div>
+</body>
+</html>

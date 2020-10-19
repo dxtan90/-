@@ -1,0 +1,127 @@
+html,body{
+    padding: 0;
+    margin: 0;
+}
+.equipment_collect,.ec_top_show,.ec_main_show,.ec_find_vo,.ec_find_vo_function,.ec_find_vo_show,.ec_find_vo_function_show,.ec_main_button_vo{
+    display: flex;
+    align-items: center;
+}
+
+.equipment_collect,.ec_top_show,.ec_main_show,.ec_find_vo_show{
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ec_find_vo,.ec_find_vo_function,.ec_main_button_vo{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.equipment_collect{
+    width: 100vw;
+    height: auto;
+}
+.ec_top_show {
+    width: 60%;
+    height: 10vh;
+    border: 1px solid black;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color:white;
+    background: gray;
+}
+.ec_find_vo{
+    width: 60%;
+    height: 5vh;
+    background: #fad0c4;
+    border-bottom: 3px solid forestgreen;
+}
+
+.ec_main_show{
+    width: 60%;
+    height: 80vh;
+    background: #38f9d7;
+    border: 1px solid black;
+}
+
+.ec_main_content{
+    width: 80%;
+    height: 80%;
+}
+
+.ec_main_button_vo{
+    width: 80%;
+    height: 8%;
+    margin-top: 5%;
+    background: #fad0c4;
+
+}
+
+.ec_find_vo_function{
+    width: 25%;
+    height: 100%;
+}
+
+.ec_find_vo_show{
+    width: 15%;
+    height: 100%;
+}
+
+.ec_find_vo_function_show{
+    width: 40%;
+    height: 100%;
+    font-size: 1rem;
+}
+.ec_find_vo_function_select{
+    width: 60%;
+    height: 80%;
+}
+.ec_main_button_vo_item1{
+    width: 25%;
+    height: 100%;
+}
+.ec_main_button_vo_item2{
+    width: 40%;
+    height: 100%;
+}
+.ec_main_button_vo_select{
+    width: 30%;
+    height: 70%;
+}
+.ec_main_button_vo_item1,.ec_main_button_vo_item2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ec_main_content_table{
+    border:1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table_head_tr{
+    width: 100%;
+    height:10%;
+    border: 1px solid black;
+    background: lightgreen;
+}
+
+.table_main_tr{
+    width: 100%;
+    height: 9%;
+}
+
+.table_th_td{
+    width: 12.5%;
+    height: 100%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.ec_main_button_vo_item_point{
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>更改仓库信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/WarehouseReset.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'warehouseManagement')"></div>
+<form method="post" th:action="${data}==null?'/Admin/warehouseManagement/RepAdd':'/Admin/warehouseManagement/RepUpdate'">
+    <div class="warehouseSet_box" style="height: auto;top:200px">
+        <div class="warehouseSet_title" th:text="${data}==null?'添加仓库信息':'更改仓库信息'"></div>
+        <hr class="new_line">
+        <table class="warehouseSet_table">
+            <tr class="whs_table_line" th:if="${data}!=null">
+                <td class="whs_desc_td">原仓库名称：</td>
+                <td class="whs_value_td" th:text="${data.getSname()}"></td>
+                <input type="text" class="whs_input" name="sid" style="display: none" readonly="readonly" th:value="${data.getSid()}">
+            </tr>
+            <tr class="whs_table_line">
+                <td class="whs_desc_td">新仓库名：</td>
+                <td class="whs_value_td">
+                    <input type="text" class="whs_input" name="sname">
+                </td>
+            </tr>
+            <tr class="whs_table_line">
+                <td class="whs_desc_td">备 注：</td>
+                <td class="whs_value_td">
+                    <textarea class="warehouseSet_textarea" name="memo" th:text="${data}!=null?${data.getMemo()}:''"></textarea>
+                </td>
+            </tr>
+        </table>
+        <hr class="new_line">
+        <div class="whsResetSubmit">
+            <input class="re_main_submit" type="submit" value="确认">
+            <a class="re_main_submit" href="/Admin/warehouseManagement/"><button style="height: 100%;width: 100%"  type="button" >返回</button></a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

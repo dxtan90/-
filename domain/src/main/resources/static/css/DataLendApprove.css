@@ -1,0 +1,43 @@
+.dla_main{
+    width:900px;
+    height:500px;
+    position: relative;
+    border: black solid 1px;
+    margin: 0 auto;
+}
+.dla_mainTable{
+    margin: 20px auto;
+    width: 810px;
+}
+.dla_mainTable th,td{
+    width: 90px;
+    height: 30px;
+    font-size: 13px;
+}
+.dla_mainTable th{
+    background-color: #00FFFF;
+}
+.dla_mainTable td{
+    text-align: center;
+    font-weight: bold;
+}
+.dla_mainTable td a{
+    color: #0000FF;
+    text-decoration: #0000FF underline;
+}
+.dla_mainTurn{
+    background-color: #ccc;
+    width: 400px;
+    position: absolute;
+    bottom: 20px;
+    left: 250px;
+}
+.title{
+    height: 60px;
+    width: 200px;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "楷体";
+}

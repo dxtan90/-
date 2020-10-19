@@ -1,0 +1,73 @@
+.title {
+    width: 120px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 20px auto;
+}
+
+.botA {
+    position: relative;
+    left: 10px;
+}
+
+.botB {
+    position: relative;
+    left: 75px;
+}
+
+.botC {
+    position: relative;
+    top: -30px;
+    left: 240px;
+}
+
+.radio {
+    width: 300px;
+    height: 30px;
+    background-color: #cccccc;
+    text-align: center;
+    line-height: 30px;
+}
+
+#radioA {
+    position: relative;
+    top: -30px;
+    left: 145px;
+}
+
+#radioB {
+    position: relative;
+    top: -60px;
+    left: 465px;
+}
+
+.search {
+    width: 360px;
+    height: 30px;
+    position: relative;
+    left: 475px;
+    top: -30px;
+    line-height: 30px;
+}
+
+.mainTable1 {
+    position: relative;
+    top: -20px;
+}
+
+.mainTurn1 {
+    position: relative;
+    top: -65px;
+}
+
+.search_button {
+    height: 30px;
+    width: 75px;
+    border-radius: 15px;
+    border: black 1px solid;
+    position: relative;
+    left: 300px;
+    top: -30px;
+    text-align: center
+}

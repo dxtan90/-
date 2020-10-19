@@ -1,0 +1,91 @@
+        .header{
+            width: 900px;
+            height:100px;
+            background-color: #00FFFF;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+            border: black 1px solid;
+        }
+        .bot{
+            width: 115px;
+            height: 30px;
+            border: black 1px solid;
+            border-radius: 3px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .main{
+            width:900px;
+            height:500px;
+            border: black solid 1px;
+            margin: 0 auto;
+        }
+        .radio{
+             width: 300px;
+             height: 30px;
+             background-color: #cccccc;
+             line-height: 30px;
+         }
+        .mainTable{
+            margin: 20px 180px;
+        }
+        .box{
+            width: 90px;
+            height: 30px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .mainTurn{
+            background-color: #ccc;
+            width: 500px;
+            margin: 0 auto;
+        }
+        .title{
+            width: 120px;
+            height: 20px;
+            font-size: 20px;
+            line-height: 20px;
+            margin: 20px auto;
+        }
+        .botA{
+            position: relative;
+            left: 10px;
+        }
+        .botB{
+            position: relative;
+            left: 75px;
+        }
+        .botC{
+            position: relative;
+            top: -30px;
+            left: 240px;
+        }
+
+        #radioA{
+            position: relative;
+            top: -30px;
+            left: 145px;
+        }
+        #radioB{
+            position: relative;
+            top: -60px;
+            left: 465px;
+        }
+        .search{
+            width: 360px;
+            height: 30px;
+            position: relative;
+            left: 475px;
+            top: -60px;
+            line-height: 30px;
+        }
+        .mainTable1{
+            position: relative;
+            top: -60px;
+        }
+        .mainTurn1{
+            position: relative;
+            top: -65px;
+        }

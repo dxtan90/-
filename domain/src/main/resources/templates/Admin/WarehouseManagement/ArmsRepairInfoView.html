@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看维修信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/ArmsRepairInfoView.css">
+</head>
+<body>
+<form>
+    <div class="ArmsRepairInfoView_box">
+        <div class="ArmsRepairInfoView_title">
+            查看维修信息
+        </div>
+        <hr class="new_line">
+        <table class="ArmsRepairInfoView_table">
+            <tr class="View_table_line">
+                <td class="View_desc_td">装备编号：</td>
+                <td class="View_value_td" th:text="${data.getZbid()}">
+                    0001
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">提交日期：</td>
+                <td class="View_value_td" th:text="${data.getPostdate()}">
+                    20200601
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">维修日期：</td>
+                <td class="View_value_td" th:text="${data.getRepairdate()}">
+                    20200601
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">维修单位：</td>
+                <td class="View_value_td" th:text="${data.getUnit()}">
+                    日落机械
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">故障原因：</td>
+                <td class="View_value_td" th:text="${data.getReason()}">
+                    弹道卡壳
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">维修状态：</td>
+                <td class="View_value_td" th:text="${data.getStatus()}">
+                    在修
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">维修费用：</td>
+                <td class="View_value_td" th:text="${data.getCost()}">
+                    5000
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">维修结果：</td>
+                <td class="View_value_td" th:text="${data.getResult()}">
+                    待定
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">维修负责人：</td>
+                <td class="View_value_td" th:text="${data.getRyname()}">
+                    胡辣汤
+                </td>
+            </tr>
+            <tr class="View_table_line">
+                <td class="View_desc_td">送修验收人：</td>
+                <td class="View_value_td" th:text="${data.getRynamel()}">
+                    待定
+                </td>
+            </tr>
+
+        </table>
+        <hr class="new_line">
+        <div class="ViewResetSubmit">
+            <a href="/Admin/warehouseManagement/equipmentRepaired" class="re_main_submit"><button style="height: 100%;width: 100%" type="button">返回</button></a>
+      </div>
+    </div>
+</form>
+</body>
+</html>

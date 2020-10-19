@@ -1,0 +1,93 @@
+
+html,body{
+    padding: 0;
+    margin:0;
+}
+.addBudgetInfo{
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    right: 40vw;
+    top:150px;
+    border: 3px solid rgba(146,165,213,0.83);
+    display: none;
+}
+
+.add_title {
+    height:10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #43e97b;
+}
+.addBudgetInfo_title{
+    text-align: center;
+    font-size: 25px;
+    font-family: "楷体";
+}
+
+.new_line {
+    margin: 0;
+    color:black;
+}
+
+
+.infoContent{
+    height: 90%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.infoContent>form{
+    width: 100%;
+    height: 100%;
+}
+
+.addInfoItems{
+    height: 80%;
+    width: 100%;
+    display: table;
+}
+.addInfoItems>tbody{
+    width: 100%;
+    height: 100%;
+}
+
+.addBudgetInfo_tr{
+    width: 100%;
+    height: 45px;
+}
+.addBudgetInfo_desc_td{
+    width: 40%;
+    height: 100%;
+    font-size: 18px;
+    font-family: "楷体";
+}
+.addBudgetInfo_value_td{
+    width: 60%;
+    height: 100%;
+}
+
+.addBudgetInfo_select,.addBudgetInfo_input{
+    width: 80%;
+}
+
+.addBudgetInfo_area{
+    width: 80%;
+    resize:none;
+}
+
+.SubmitOrRollback{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(172,213,169,0.83);
+}
+
+.addInfoItems_submit{
+    width: 100px;
+    height: 35px;
+}

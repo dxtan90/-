@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>装备经费信息管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/budgetInformation.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/equipmentCollect.css" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="/css/budgetAddInfo.css">
+    <link rel="stylesheet" type="text/css" href="/css/budgetInfoView.css">
+    <script src="/webjars/jquery/3.5.1/jquery.js" type="text/javascript"></script>
+    <script src="/addJs/My97DatePicker/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'budgetInformation')"></div>
+<div class="main" id="main">
+    <button class="bot bot1" id="budgetAddInfo_actionButton">添加资金流信息</button>
+    <div class="radio">
+        <form>
+            筛选：入账/出账：
+            <select id="inoutSelect">
+                <option th:selected="selected">全部</option>
+                <option>只看出账</option>
+                <option>只看入账</option>
+            </select>
+            操作时间：
+            <select id="timeSelect">
+                <option th:selected="selected">全部</option>
+                <option>近一个周</option>
+                <option>近一个月</option>
+            </select>
+            经办人：
+            <select id="personSelect">
+                <option th:selected="selected">全部</option>
+                <option th:each="ry:${rys}" th:text="${ry}"></option>
+            </select>
+        </form>
+    </div>
+    <hr/>
+    <div class="mainTable">
+        <table border="1" cellpadding="0" cellspacing="0" id="tableShow">
+            <tr>
+                <th>经费来源/去向</th>
+                <th>更改金额</th>
+                <th>操作时间</th>
+                <th>经办人</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="info:${infos.getLayInfo()}" class="showInfoTr">
+                <td th:text="${info.getSource()}">xxx</td>
+                <td th:text="${info.getSSum()}">-5000</td>
+                <td th:text="${info.getIndate()}">20200202</td>
+                <td th:text="${info.getRyname()}">xxx</td>
+                <td><button class="ec_main_button_vo_item_point" th:value="${info.getId()}+' '+${info.isIn()}" onclick="clickUrl(this.value);">详细消息</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="ec_main_button_vo" style="margin-left: 10%; margin-top: 0">
+        <div class="ec_main_button_vo_item1">
+            <span id="now_page">第1页</span>
+            <span id="max_page" th:text="'共'+${infos.getPages()}+'页'">共x页</span>
+        </div>
+        <div class="ec_main_button_vo_item1">
+            <a class="ec_main_button_vo_item_point" id="pre" style="color:grey">上一页</a>
+            <span>/</span>
+            <a class="ec_main_button_vo_item_point" id="next">下一页</a>
+        </div>
+
+        <div class="ec_main_button_vo_item2">
+            <a class="ec_main_button_vo_item_point" id="first" style="color:grey">返回首页</a>
+            <a class="ec_main_button_vo_item_point" id="last">尾页</a>
+            <select class="ec_main_button_vo_select" id="pageSelect">
+                <option th:each="page:${#numbers.sequence(1,infos.getPages())}" th:text="${page}" class="select_page">1</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div id="addBudgetInfo" class="addBudgetInfo">
+    <div class="add_title"><span class="addBudgetInfo_title">添加资金信息</span></div>
+    <hr class = "new_line">
+    <div class="infoContent">
+        <form action="/Admin/budgetInformation/addInfo" method="post" id="addInfoForm">
+            <input style="display: none" id="updateInfo_id" name="id"/>
+            <table class="addInfoItems">
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">账目种类</td>
+                    <td class="addBudgetInfo_value_td">
+                        <select class="addBudgetInfo_select" id="actionTypeInfo" name="type">
+                            <option>出账</option>
+                            <option>入账</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">经费明细编号</td>
+                    <td class="addBudgetInfo_value_td">
+                        <input type="text" class="addBudgetInfo_input" name="itemid" id="itemId"/>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">金额</td>
+                    <td class="addBudgetInfo_value_td">
+                        <input type="text" class="addBudgetInfo_input" name="sum" id="sum"/>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">日期</td>
+                    <td class="addBudgetInfo_value_td">
+                        <input type="text" class="addBudgetInfo_input" name="date"  id="inputDate" onclick="WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss',startDate:getCurrent(),alwaysUseStartDate:true})" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">经办人</td>
+                    <td class="addBudgetInfo_value_td">
+                        <input type="text" class="addBudgetInfo_input" name="ryname" id="ryName"/>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">批准人</td>
+                    <td class="addBudgetInfo_value_td">
+                        <input type="text" class="addBudgetInfo_input" id="RyNameL" name="rynamel"/>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">经费来源/使用摘要</td>
+                    <td class="addBudgetInfo_value_td">
+                        <input type="text" class="addBudgetInfo_input" name="source" id="Source"/>
+                    </td>
+                </tr>
+                <tr class="addBudgetInfo_tr">
+                    <td class="addBudgetInfo_desc_td">备注</td>
+                    <td class="addBudgetInfo_value_td">
+                        <textarea class="addBudgetInfo_area" name="memo" id="memo"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <hr class = "new_line">
+            <div class="SubmitOrRollback">
+                <button class="addInfoItems_submit" type="button" id="submitInfo">提交</button>
+                <button class="addInfoItems_submit" id="addInfoCancel" type="button">取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="budgetView_box" id="look_info_box">
+    <div class="budgetView_title">
+        查看经费详细信息
+    </div>
+    <hr class="new_line">
+    <input style="display: none" id="look_info_id"/>
+    <table class="View_table">
+        <tr class="ViewLine">
+            <td class="view_desc_td">账目种类：</td>
+            <td class="view_value_td" id="look_info_type">入账</td>
+        </tr>
+        <tr class="ViewLine">
+            <td class="view_desc_td">经费明细编号：</td>
+            <td class="view_value_td" id="look_info_itemId">IDb23907x</td>
+        </tr>
+        <tr class="ViewLine">
+            <td class="view_desc_td">金 额：</td>
+            <td class="view_value_td" id="look_info_sum">5000</td>
+        </tr>
+        <tr class="ViewLine">
+            <td class="view_desc_td">日 期：</td>
+            <td class="view_value_td" id="look_info_date">20002020</td>
+        </tr>
+        <tr class="ViewLine">
+            <td class="view_desc_td">经办人：</td>
+            <td class="view_value_td" id="look_info_ryName">无</td>
+        </tr>
+        <tr class="ViewLine">
+            <td class="view_desc_td">批准人：</td>
+            <td class="view_value_td" id="look_info_ryNameL">无</td>
+        </tr>
+        <tr class="ViewLine">
+            <td class="view_desc_td">经费来源/使用摘要：</td>
+            <td class="view_value_td" id="look_info_source">暂无</td>
+        </tr>
+        <tr class="ViewLine_Memo">
+            <td class="view_desc_td">备 注：</td>
+            <td class="view_value_td" id="look_info_memo">暂无</td>
+        </tr>
+    </table>
+    <hr class="new_line">
+    <div class="re_main_line">
+        <button class="re_main_submit" type="button" id="disappear">返回</button>
+        <button class="re_main_submit" type="button" id="updateInfo">更新</button>
+        <a class="re_main_submit" style="text-decoration: none;" id="deleteInfoHref"><button style="height: 100%;width: 100%" type="button">删除</button></a>
+    </div>
+</div>
+<script src="/js/BudgetInformation.js"></script>
+<script src="/js/BudgetInformationAdd.js"></script>
+</body>
+</html>

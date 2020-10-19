@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>装备统计</title>
+    <link rel="stylesheet" href="/css/equipmentCollect.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'statisticalQuery')"></div>
+    <!--装备统计-->
+    <div class="equipment_collect">
+        <span class="ec_top_show">装备出入库统计表</span>
+        <div class="ec_find_vo">
+            <span class="ec_find_vo_show">筛选:</span>
+            <div class="ec_find_vo_function">
+                <span class="ec_find_vo_function_show">出入库信息:</span>
+                <select class="ec_find_vo_function_select">
+                    <option>全部</option>
+                    <option>出库</option>
+                    <option>入库</option>
+                </select>
+            </div>
+            <div class="ec_find_vo_function">
+                <span class="ec_find_vo_function_show">装备名称:</span>
+                <select class="ec_find_vo_function_select">
+                    <option>全部</option>
+                    <option>xxx</option>
+                </select>
+            </div>
+            <div class="ec_find_vo_function">
+                <span class="ec_find_vo_function_show">操作时间:</span>
+                <select class="ec_find_vo_function_select">
+                    <option>全部</option>
+                    <option>近一周</option>
+                    <option>近一个月</option>
+                </select>
+            </div>
+        </div>
+        <div class="ec_main_show" style="height: auto">
+            <div class="ec_main_content">
+                <table class="ec_main_content_table">
+                    <tr class="table_head_tr">
+                        <th class="table_th_td" style="width: auto;">类型</th>
+                        <th class="table_th_td" style="width: auto;">装备编号</th>
+                        <th class="table_th_td" style="width: auto;">装备类型</th>
+                        <th class="table_th_td" style="width: auto;">单价</th>
+                        <th class="table_th_td" style="width: auto;">操作时间</th>
+                        <th class="table_th_td" style="width: auto;">操作数量</th>
+                        <th class="table_th_td" style="width: auto;">仓库编号</th>
+                        <th class="table_th_td" style="width: auto;">经办人</th>
+                        <th class="table_th_td" style="width: auto;">验收人</th>
+                        <th class="table_th_td" style="width: auto;">简要概述</th>
+
+                    </tr>
+                   <tr class="table_main_tr" th:each="i:${in.getRecords()}">
+                       <td class="table_th_td" style="width: auto;" th:text="装备入库"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getZbid()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getSitype()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getZbprice()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getOptdate()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getZbnum()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getSid()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getRyname()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getRynamel()}"></td>
+                       <td class="table_th_td" style="width: auto;" th:text="${i.getMemo()}"></td>
+                   </tr>
+                    <tr class="table_main_tr" th:each="i:${out.getRecords()}">
+                        <td class="table_th_td" style="width: auto;" th:text="装备出库"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getZbid()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getTtype()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getZbprice()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getOptdate()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getZbnum()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getSid()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getRyname()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getRynamel()}"></td>
+                        <td class="table_th_td" style="width: auto;" th:text="${i.getMemo()}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ec_main_button_vo">
+                <div class="ec_main_button_vo_item1">
+                    <span th:text="'第'+${in.getCurrentPageNum()}+'页'">页</span>
+                    <span th:text="'共'+${in.getTotalPageNum()}+'页'">共x页</span>
+                </div>
+                <div class="ec_main_button_vo_item1">
+                    <a th:href="@{'/Admin/FourQuery/equipmentCollect?page='+${in.getPrePageNum()}}">上一页</a>
+                    <span>/</span>
+                    <a th:href="@{'/Admin/FourQuery/equipmentCollect?page='+${in.getNextPageNum()}}">下一页</a>
+                </div>
+
+                <div class="ec_main_button_vo_item2">
+                    <a th:href="@{'/Admin/FourQuery/equipmentCollect?page=1'}">返回首页</a>
+                    <a th:href="@{'/Admin/FourQuery/equipmentCollect?page='+${in.getTotalPageNum()}}">尾页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

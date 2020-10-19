@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户详细信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/UserInfoView.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'warehouseManagement')"></div>
+    <div class="UserInfoView_box">
+        <div class="UserInfoView_title">
+            用户详细信息
+        </div>
+        <hr class="new_line">
+        <table border="1" class="UserInfoView_table">
+            <tr class="uiv_photo_line">
+                <td class="uiv_photo_td" rowspan="3" style="display: flex;align-items: center;justify-content: center">
+                    <img th:src="${person.getPhoto()}" style="width: 100%;height: auto" alt="个人信息"/>
+                </td>
+                <td class="uiv_desc_photoSide_td">人员编号：</td>
+                <td class="uiv_value_photoSide_td" th:text="${person.getRyid()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_photoSide_td">姓名：</td>
+                <td class="uiv_value_photoSide_td" th:text="${person.getRyname()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_photoSide_td">民族：</td>
+                <td class="uiv_value_photoSide_td" th:text="${person.getNationaloty()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">生日：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getBirth()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">职务：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getTitle()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">军衔：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getRank()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">政治面貌：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getPoliticalParty()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">文化程度：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getCultureLevel()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">婚姻状况：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getMaritalCondition()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">籍贯：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getFamilyPlace()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">身份证号：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getIdCard()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">所在部门编号：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getDepId()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">工作岗位：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getPosition()}"></td>
+            </tr>
+            <tr class="uiv_table_line">
+                <td class="uiv_desc_td">部门领导编号：</td>
+                <td class="uiv_value_td" colspan="2" th:text="${person.getUpperid()}"></td>
+            </tr>
+        </table>
+        <hr class="new_line">
+        <div class="uivSubmit">
+            <a  class="re_main_submit" href="/Admin/basicInformation"><button type="button" style="height: 100%;width: 100%">返回</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

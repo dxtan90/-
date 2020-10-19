@@ -1,0 +1,48 @@
+        .header{
+            width: 900px;
+            height:100px;
+            background-color: #00FFFF;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+            border: black 1px solid;
+        }
+        .bot{
+            width: 115px;
+            height: 30px;
+            border: black 1px solid;
+            border-radius: 3px;
+            font-size: 13px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .main{
+            width:900px;
+            height:550px;
+            border: black solid 1px;
+            margin: 0 auto;
+        }
+        .mainTable{
+            margin: 20px 180px;
+        }
+        th,td{
+            width: 90px;
+            height: 30px;
+            font-size: 13px;
+        }
+        th{
+            background-color: #00FFFF;
+        }
+        td{
+            text-align: center;
+            font-weight: bold;
+        }
+        td a{
+            color: #0000FF;
+            text-decoration: #0000FF underline;
+        }
+        .mainTurn{
+            background-color: #ccc;
+            width: 400px;
+            margin: 0 auto;
+        }

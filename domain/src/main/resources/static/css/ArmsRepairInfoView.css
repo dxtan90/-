@@ -1,0 +1,62 @@
+html,body{
+    pViewing: 0;
+    margin: 0;
+}
+.ArmsRepairInfoView_box {
+    width: 400px;
+    height: 540px;
+    position: absolute;
+    right: 40vw;
+    top: 100px;
+    border: 4px solid rgba(146, 165, 213, 0.83);
+}
+.ArmsRepairInfoView_title{
+    height:10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #43e97b;
+    text-align: center;
+    font-size: 25px;
+    font-family: "楷体", serif;
+}
+.new_line {
+    margin: 0;
+    color:black;
+}
+.ArmsRepairInfoView_table{
+    height: 80%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+.View_table_line{
+    width: 100%;
+    height: 40px;
+}
+.View_desc_td{
+    width: 40%;
+    height: 100%;
+    font-size: 18px;
+    font-family: "楷体", serif;
+}
+.View_value_td{
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+}
+.View_select,.View_input{
+    width: 80%;
+}
+.ViewResetSubmit{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(172,213,169,0.83);
+}
+.re_main_submit{
+    width: 100px;
+    height: 35px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/fa/css/all.css">
+    <link rel="stylesheet" href="/css/equipRepair.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'warehouseManagement')"></div>
+    <div>
+        <h1 class="explain">装备修理管理</h1>
+        <div class="box clearfix">
+            <ul class="top clearfix">
+                <form action="/Admin/warehouseManagement/find" method="get">
+                    <li class="btn2">
+                        <a href="/Admin/warehouseManagement/add">添加维修信息</a>
+                    </li>
+                    <li class="info" >筛选:id查找：
+                        <input type="text" name="id"/>
+                    </li>
+                    <li class="btn2">
+                        <input type="submit" value="提交">
+                    </li>
+                </form>
+            </ul>
+            <div class="main">
+                <table class="tab">
+                    <tr>
+                        <td>维修编号</td>
+                        <td>装备编号</td>
+                        <td>提交日期</td>
+                        <td>维修单位</td>
+                        <td>故障原因</td>
+                        <td>当前状态</td>
+                        <td>删除|修改|详情</td>
+                    </tr>
+                    <tr th:each="d:${data.getRecords()}">
+                        <td th:text="${d.getRepid()}">XXX</td>
+                        <td th:text="${d.getZbid()}">123456789</td>
+                        <td th:text="${d.getPostdate()}">ooc</td>
+                        <td th:text="${d.getUnit()}">3</td>
+                        <td th:text="${d.getReason()}">日常维护</td>
+                        <td th:text="${d.getStatus()}">已经送修</td>
+                        <td class="operation">
+                            <a th:href="@{'/Admin/warehouseManagement/delete?id='+${d.getRepid()}}" class="fa fa-trash-alt"></a>
+                            <a th:href="@{'/Admin/warehouseManagement/update?id='+${d.getRepid()}}" class="fa fa-edit"></a>
+                            <a th:href="@{'/Admin/warehouseManagement/find?id='+${d.getRepid()}}" class="fa fa-list-alt"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page_nav">
+                <a th:href="@{'/Admin/warehouseManagement/equipmentRepaired?page=1'}">首页</a>
+                <a th:href="@{'/Admin/warehouseManagement/equipmentRepaired?page='+${data.getPrePageNum()}}">上一页</a>
+                <a th:href="@{'/Admin/warehouseManagement/equipmentRepaired?page='+${data.getNextPageNum()}}">下一页</a>
+                <a th:href="@{'/Admin/warehouseManagement/equipmentRepaired?page='+${data.getTotalPageNum()}}">末页</a>
+                共<span th:text="${data.getTotalPageNum()}"></span>页，<span th:text="${data.getTotalRecords()}"></span>条记录 到第<input value="4" name="pn" id="pn_input"/>页
+                <input type="button" value="确定" class="btn">
+            </div>
+    </div>
+    </div>
+</body>
+</html>

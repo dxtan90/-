@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.text.springboot.money.mapper.OutLayIn">
+
+    <select id="findLayInById" resultType="Outlayin" parameterType="Integer">
+        select id,source,itemid,insum,ryname,indate,memo from OutLayIn where id = #{id};
+    </select>
+
+    <insert id="addLayIn" parameterType="Outlayin">
+        insert into OutLayIn(source,itemid,insum,ryname,indate,memo) values(#{source},#{itemid},#{insum},#{ryname},#{indate},#{memo});
+    </insert>
+
+    <select id="findAllLayIn" resultType="Outlayin">
+        select * from OutLayIn;
+    </select>
+
+    <select id="findLayInByRyName" parameterType="String" resultType="Outlayin">
+        select * from OutLayIn where ryname like #{name};
+    </select>
+
+    <select id="findAllRyName" resultType="String">
+        select ryname from OutLayIn group by ryname;
+    </select>
+
+    <select id="findLayInByVo" parameterType="SelectVo" resultType="Outlayin">
+        select * from OutLayIn where 1=1
+        <if test="time!='全部' and time!=null">
+            <if test="time=='近一个月'">
+                and DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= STR_TO_DATE(indate,"%Y/%m/%d")
+            </if>
+            <if test="time=='近一个周'">
+                and DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= STR_TO_DATE(indate,"%Y/%m/%d")
+            </if>
+        </if>
+        <if test="person!='全部' and person!=null">
+            and ryname=#{person}
+        </if>
+        limit #{startSize},10;
+    </select>
+
+    <select id="findAllCount" resultType="Integer">
+        select count(id) from OutLayIn;
+    </select>
+    <update id="updateLayIn" parameterType="Outlayin">
+        update OutLayin set source = #{source} , itemid = #{itemid} ,insum = #{insum},ryname = #{ryname},indate = #{indate},memo=#{memo} where id = #{id};
+    </update>
+
+    <delete id="deleteLayIn" parameterType="Integer">
+        delete from OutLayin where id=#{id};
+    </delete>
+</mapper>
+

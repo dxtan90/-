@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>统计查询</title>
+    <link rel="stylesheet" href="/css/statisticalQuery.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'statisticalQuery')"></div>
+<!--统计查询界面-->
+<div class="statistical_query">
+    <div class="mainContent">
+        <div class="four_function">
+            <span class="function_title">装备出入库统计报表</span>
+            <span class="function_desc">用来统计装备出库和入库的记录信息。你可以通过装备的名称查询装备的出入库情况，及库存情况，并生成报表。</span>
+            <a class="into_a" th:href="@{/Admin/FourQuery/equipmentCollect}"><button class="into_action">进入</button></a>
+        </div>
+        <div class="four_function">
+            <span class="function_title">库存装备流水统计表</span>
+            <span class="function_desc">用来统计库存装备的数量变化信息你可以查询统计出装备的出入库类型、时间、数量、金额、批准人、经办人等信息。</span>
+            <a class="into_a" th:href="@{/Admin/FourQuery/repertoryCount}"><button class="into_action">进入</button></a>
+        </div>
+        <div class="four_function">
+            <span class="function_title">部门人员基本情况查询</span>
+            <span class="function_desc">用来查询某部门全体人员的基本情况，可以帮助合理的调整、配备人员。</span>
+            <a class="into_a" th:href="@{/Admin/FourQuery/personalInformation}"><button class="into_action">进入</button></a>
+        </div>
+        <div class="four_function">
+            <span class="function_title">经费汇总表</span>
+            <span class="function_desc">可以对各项目经费的入帐会额、使用金额和经费余额一目了然，并汇总经费的结余和超支情况。</span>
+            <a class="into_a" th:href="@{/Admin/FourQuery/budgetSummary}"><button class="into_action">进入</button></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

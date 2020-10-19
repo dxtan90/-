@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>借阅资料</title>
+    <link rel="stylesheet" type="text/css" href="/css/DataLend.css">
+</head>
+<body>
+<div>
+<form method="post" action="/User/dataOfBorrowing/addDataLend">
+    <div class="DataLend_box">
+        <div class="DataLend_title">
+            借阅资料
+        </div>
+        <hr class="new_line">
+        <table class="DataLend_table">
+            <tr class="dl_table_line">
+                <td class="dl_desc_td">资料名称：</td>
+                <td class="dl_value_td" th:text="${data.getDataName()}"></td>
+            </tr>
+            <tr class="dl_table_line">
+                <td class="dl_desc_td">资料编号：</td>
+                <td class="dl_value_td">
+                    <input type="text" class="dl_input" style="background-color: transparent;border: none" name="DataNo" th:value="${data.getDataNo()}" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr class="dl_table_line">
+                <td class="dl_desc_td">借阅人编号：</td>
+                <td class="dl_value_td">
+                    <input type="text" class="dl_input" style="background-color: transparent;border: none"  name="Ryid" th:value="${session.user.getRyId()}" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr class="dl_table_line">
+                <td class="dl_desc_td">借阅数量：</td>
+                <td class="dl_value_td">
+                    <input type="text" class="dl_input" name="LendCount"/>
+                </td>
+            </tr>
+        </table>
+        <hr class="new_line">
+        <div class="dlResetSubmit">
+            <input class="re_main_submit" type="submit" value="确认">
+            <a class="re_main_submit" href="/User/dataOfBorrowing"><button style="height: 100%;width: 100%" type="button">返回</button></a>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

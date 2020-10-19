@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>装备入库</title>
+    <link rel="stylesheet" type="text/css" href="/css/equipmentStoreIn.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'warehouseManagement')"></div>
+<form method="post" th:action="${dir}=='in'?'/Admin/warehouseManagement/storeIn':'/Admin/warehouseManagement/takeOut'">
+    <div class="equipmentStoreIn_box" style="top:200px">
+        <div class="equipmentStoreIn_title" th:text="${dir}=='out'?'装备调拨':'装备入库'">
+            装备入库
+        </div>
+        <hr class="new_line">
+        <table class="equipmentStoreIn_table">
+            <tr class="esi_table_line">
+                <td class="esi_desc_td" th:text="${dir}=='in'?'入库类型：':'出库类型：'"></td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" th:name="${dir}=='in'?'sitype':'ttype'">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td" th:text="${dir}=='in'?'装备入库编号：':'装备出库编号：'"></td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="zbid">
+                </td>
+            </tr>
+            <tr class="esi_table_line" th:if="${dir}=='in'">
+                <td class="esi_desc_td">生产日期：</td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="makedate">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td">装备单价：</td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="zbprice">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td">装备数量：</td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="zbnum">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td">仓库编号：</td>
+                <td class="esi_value_td" name="sid" >
+                    <input type="text" class="esi_input" name="sid" readonly="readonly" th:value="${sid}">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td" th:text="${dir}=='in'?'验收人：':'批准人：'"></td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="rynamel">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td">经办人：</td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="ryname">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td">入库时间：</td>
+                <td class="esi_value_td">
+                    <input type="text" class="esi_input" name="opdate">
+                </td>
+            </tr>
+            <tr class="esi_table_line">
+                <td class="esi_desc_td">备 注：</td>
+                <td class="esi_value_td">
+                    <textarea class="equipmentStoreIn_textarea" name="memo"></textarea>
+                </td>
+            </tr>
+        </table>
+        <hr class="new_line">
+        <div class="esiResetSubmit">
+            <input class="re_main_submit" type="submit" value="确认">
+            <a class="re_main_submit" th:href="@{'/Admin/warehouseManagement/warehouseInventory?sid='+${sid}}"><button style="height: 100%;width: 100%" type="button">返回</button></a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

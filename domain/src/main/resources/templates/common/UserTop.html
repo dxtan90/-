@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>顶端用户资料显示</title>
+    <link rel="stylesheet" href="/static/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<!--顶部信息展览-->
+<div class="TopShow" th:fragment="topInfoBar">
+    <div class="topTitleShow"><span class="spanTitle">装备管理系统</span></div>
+    <div class="user">
+        <div class="userImg"><img class="userHead" th:src="${session.person.getPhoto()}"/></div>
+        <div class="userInfos">
+            <div class="userInfo">
+                <span>用户名:</span><span th:text="${session.user.getUsersname()}">user</span>
+            </div>
+            <div class="userInfo">
+                <span>用户id:</span><span th:text="${session.user.getRyId()}">123456</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="userAction">
+        <div class="action">
+            <a class="aa" th:href="@{/selfInformation}">
+                <button class="button">个人中心</button>
+            </a>
+        </div>
+        <div class="action">
+            <a class="aa" href="/exit">
+                <button class="button">登出</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--管理员功能导航-->
+<div class="Admin" th:fragment="topNavAdmin">
+    <div class="toUse" th:classappend="'admin'==${activeUri} ? 'contentActive':null">
+        <a class="desc"  th:href="@{/Admin}">
+            管理员主页
+        </a>
+    </div>
+    <div class="toUse" th:classappend="'basicInformation'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/Admin/basicInformation}">
+            基本信息管理
+        </a>
+    </div>
+    <div class="toUse" th:classappend="'warehouseManagement'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/Admin/warehouseManagement}">
+            装备仓库管理
+        </a>
+    </div>
+    <div class="toUse" th:classappend="'budgetInformation'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/Admin/budgetInformation}">
+            装备经费信息管理
+        </a>
+    </div>
+    <div class="toUse" th:classappend="'documentManagement'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/Admin/documentManagement}">
+            装备资料管理
+        </a>
+    </div>
+    <div class="toUse" th:classappend="'statisticalQuery'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/Admin/FourQuery}">
+            统计查询管理
+        </a>
+    </div>
+</div>
+
+<!--不同用户功能导航-->
+<div class="User" th:fragment="topNavUser">
+    <div class="toUse1"  th:classappend="'user'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/User}">
+            用户主页
+        </a>
+    </div>
+    <div class="toUse1" th:classappend="'dataOfBorrowing'==${activeUri} ? 'contentActive':null">
+        <a class="desc" th:href="@{/User/dataOfBorrowing}">
+            资料借阅
+        </a>
+    </div>
+</div>
+</body>
+</html>

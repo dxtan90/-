@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>资料借阅</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/dataOfBorrowing.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavUser(activeUri = 'dataOfBorrowing')"></div>
+<div class="main">
+    <a  th:href="@{'/User/myEquipment/lendLog?ryid='+${session.user.getRyId()}}"><button type="button" class="bot botB">我的借阅日志</button></a>
+    <a  th:href="@{'/User/myEquipment/lendList?ryid='+${session.user.getRyId()}}"><button type="button" class="bot botC">我的借阅列表</button></a>
+    <div class="radio" id="radioB">
+        <form>
+            筛选：资料分类：
+            <select>
+                <option selected="selected">全部</option>
+                <option>一级</option>
+                <option>二级</option>
+            </select>
+        </form>
+    </div>
+    <div class="mainTable mainTable1">
+        <table border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>资料名</th>
+                <th>资料分类</th>
+                <th>资料编号</th>
+                <th>基本信息</th>
+                <th>可借阅数量</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="d:${data}">
+                <td th:text="${d.getDataName()}">xxx</td>
+                <td th:text="${d.getTypeId()}">-5000</td>
+                <td th:text="${d.getDataNo()}">20200202</td>
+                <td th:text="${d.getMemo()}"></td>
+                <td th:text="${d.getICount()}">xxx</td>
+                <td th:text="${d.getICount()}==0?'不可借阅':'可借阅'">可借阅</td>
+                <td><a th:href="@{'/User/dataOfBorrowing/ArmsLend?DataId='+${d.getDataNo()}}" th:if="${d.getICount()!=0}"><button type="button">借阅</button></a></td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="mainTurn mainTurn1"></div>
+</div>
+
+</body>
+</html>

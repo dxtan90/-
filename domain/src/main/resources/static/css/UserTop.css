@@ -1,0 +1,122 @@
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+.TopShow{
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    border-bottom: 2px solid green;
+}
+
+.topTitleShow{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user{
+    height: 100%;
+    width: 30%;
+    display: flex;
+}
+.userAction{
+    height: 100%;
+    width: 30%;
+}
+
+.spanTitle{
+    margin: auto;
+    font-size: 2rem;
+    font-weight: bold;
+    color: olivedrab;
+}
+.userImg{
+    width: 15%;
+    height: 100%;
+    background: #38f9d7;
+    border-radius: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.userHead{
+    width:auto;
+    height:100%;
+}
+
+.userInfos{
+    width: 85%;
+    height: 100%;
+}
+.userInfo {
+    width: 100%;
+    height: 50%;
+}
+.action{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aa{
+    width: 100%;
+    height: 100%;
+}
+.button{
+    margin-left: 10%;
+    width: 60%;
+    height: 90%;
+    border-radius: 5px;
+}
+
+.Admin,.User{
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid green;
+    margin-bottom: 1vh;
+}
+
+.toUse,.toUse1{
+    height: 100%;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.desc{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.toUse{
+    width: 15%;
+}
+.toUse1{
+    width: 30%;
+}
+
+.desc:hover{
+    background: rgba(31,205,71,0.96);
+}
+
+
+.contentActive{
+    background: #38f9d7;
+}

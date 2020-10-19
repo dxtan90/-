@@ -1,0 +1,66 @@
+html,body{
+    padding: 0;
+    margin: 0;
+}
+.warehouseSet_box {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    right: 40vw;
+    top: 100px;
+    border: 4px solid rgba(146, 165, 213, 0.83);
+}
+.warehouseSet_title{
+    height:20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #43e97b;
+    text-align: center;
+    font-size: 25px;
+    font-family: "楷体", serif;
+}
+.new_line {
+    margin: 0;
+    color:black;
+}
+.warehouseSet_table{
+    height: 60%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+.whs_table_line{
+    width: 100%;
+    height: 60px;
+}
+.whs_desc_td{
+    width: 30%;
+    height: 100%;
+    font-size: 18px;
+    font-family: "楷体", serif;
+}
+.whs_value_td{
+    width: 70%;
+    height: 100%;
+    overflow: auto;
+}
+.whs_input{
+    width: 80%;
+}
+.warehouseSet_textarea{
+    width: 80%;
+    resize:none;
+}
+.whsResetSubmit{
+    width: 100%;
+    height: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(172,213,169,0.83);
+}
+.re_main_submit{
+    width: 100px;
+    height: 35px;
+}

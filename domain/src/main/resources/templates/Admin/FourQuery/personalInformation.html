@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人员信息</title>
+    <link rel="stylesheet" href="/css/equipmentCollect.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'statisticalQuery')"></div>
+<!--人员信息-->
+<div class="equipment_collect">
+    <span class="ec_top_show">部门人员情况基本表</span>
+    <div class="ec_find_vo">
+        <span class="ec_find_vo_show">筛选:</span>
+        <div class="ec_find_vo_function">
+            <span class="ec_find_vo_function_show">拥有权限:</span>
+            <select class="ec_find_vo_function_select">
+                <option>全部</option>
+                <option>管理员</option>
+                <option>普通用户</option>
+            </select>
+        </div>
+        <div class="ec_find_vo_function">
+            <span class="ec_find_vo_function_show">所属部门:</span>
+            <select class="ec_find_vo_function_select">
+                <option>全部</option>
+                <option>xxx</option>
+            </select>
+        </div>
+    </div>
+    <div class="ec_main_show">
+        <div class="ec_main_content">
+            <table class="ec_main_content_table">
+                <tr class="table_head_tr">
+                    <th class="table_th_td">用户名</th>
+                    <th class="table_th_td">用户编号</th>
+                    <th class="table_th_td">性别</th>
+                    <th class="table_th_td">生日</th>
+                    <th class="table_th_td">背景</th>
+                    <th class="table_th_td">文化程度</th>
+                    <th class="table_th_td">身份证号</th>
+                    <th class="table_th_td">军衔</th>
+                </tr>
+                <tr class="table_main_tr" th:each="d:${data}">
+                    <td class="table_th_td" th:text="${d.getRyname()}">张三</td>
+                    <td class="table_th_td" th:text="${d.getRyid()}">123</td>
+                    <td class="table_th_td" th:text="${d.getSex()}">occ</td>
+                    <td class="table_th_td" th:text="${d.getBirth()}">2020/5/18</td>
+                    <td class="table_th_td" th:text="${d.getPoliticalParty()}">2020/5/18</td>
+                    <td class="table_th_td" th:text="${d.getCultureLevel()}">2020/5/18</td>
+                    <td class="table_th_td" th:text="${d.getIdCard()}">管理员</td>
+                    <td class="table_th_td" th:text="${d.getRank()}">管理员</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

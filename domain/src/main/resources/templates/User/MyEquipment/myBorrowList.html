@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的借阅列表</title>
+
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/css/myBorrowList.css">
+
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavUser(activeUri = 'dataOfBorrowing')"></div>
+<div class="main" style="height: 550px">
+    <div class="header">我的借阅列表</div><br>
+        <table border="1" cellpadding="0" cellspacing="0" style="margin:0 auto">
+            <tr>
+                <td class="box">资料名</td>
+                <td class="box">资料分类</td>
+                <td class="box">资料编号</td>
+                <td class="box">借阅日期</td>
+                <td class="box">批准人</td>
+                <td class="box">数量</td>
+                <td class="box">状态</td>
+                <td class="box">操作</td>
+            </tr>
+            <tr th:each="d:${data}">
+                <td class="box" th:text="${d.getDataName()}">xxx</td>
+                <td class="box" th:text="${d.getTypeId()}">-5000</td>
+                <td class="box" th:text="${d.getDataNo()}">20200202</td>
+                <td class="box" th:text="${d.getLendDate()}">2020.1.20</td>
+                <td class="box" th:text="${d.getRyname()}">2020.2.20</td>
+                <td class="box" th:text="${d.getLendCount()}"></td>
+                <td class="box" th:text="${d.getFlag()}==0?'借阅审核':(${d.getFlag()}==1?'已借阅':(${d.getFlag()}==2?'归还审核':(${d.getFlag()}==3?'已归还':'被驳回')))">已归还</td>
+                <td class="box"><a th:if="${d.getFlag()}==1" th:href="@{'/User/myEquipment/bookReturn?Id='+${d.getId()}}">归还</a></td>
+            </tr>
+        </table>
+    <div class="mainTurn"></div>
+</div>
+</body>
+</html>

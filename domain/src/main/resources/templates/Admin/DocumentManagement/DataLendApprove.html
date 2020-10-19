@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>审查借阅信息</title>
+    <link rel="stylesheet" type="text/css" href="/css/DataLendApprove.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'documentManagement')"></div>
+<div class="dla_main">
+    <div class="title">装备借阅审核</div>
+    <div class="dla_mainTable">
+        <table border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>借阅资料名</th>
+                <th>借阅资料编号</th>
+                <th>库内资料数量</th>
+                <th>借阅人</th>
+                <th>借阅人编号</th>
+                <th>借阅数量</th>
+                <th>借阅状态</th>
+                <td colspan="2">操作</td>
+            </tr>
+            <tr th:each="d:${data}">
+                <td th:text="${d.getDataName()}">论xxx的自我修养</td>
+                <td th:text="${d.getDataNo()}">Dom4j</td>
+                <td th:text="${d.getAllCount()}">2</td>
+                <td >小林</td>
+                <td th:text="${d.getRyid()}">2001010</td>
+                <td th:text="${d.getLendCount()}">2</td>
+                <td th:text="${d.getFlag()}==0?'借阅申请':'归还申请'">已申请待审批
+                <td><a th:if="(${d.getAllCount()}>=${d.getLendCount()} and ${d.getFlag()==0}) or ${d.getFlag()}==2" th:href="@{'/Admin/documentManagement/pass?id='+${d.getId()}+'&DataNo='+${d.getDataNo()}}">通过</a></td>
+                <td><a th:href="@{'/Admin/documentManagement/refuse?id='+${d.getId()}}">驳回</a></td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="dla_mainTurn">
+        第__页 共__页 上一页 / 下一页 返回首页 跳转到第__页
+    </div>
+</div>
+</body>
+</html>

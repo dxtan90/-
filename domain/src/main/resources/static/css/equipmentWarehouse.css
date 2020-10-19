@@ -1,0 +1,85 @@
+.box{
+    width: 70%;
+    height: 600px;
+    margin: 100px auto;
+    border: 1px black solid;
+}
+
+.clearfix::before,
+.clearfix::after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.top{
+    width: 100%;
+    margin-top: 20px;
+}
+
+#newstore{
+    margin: 0px 24%;
+}
+
+.btn{
+    background-color: #317EF3;
+
+    border: none;
+    padding: 3px 8px;
+}
+
+.main{
+    width: 100%;
+    height: 75%;
+    margin-top: 10px;
+}
+
+.b_list{
+    width: 21%;
+    float: left;
+    height: 95%;
+    margin: 0px 1.5%;
+    border: 1px black solid;
+    border-radius: 30px;
+    padding-top: 3%;
+    text-align: center;
+}
+
+.b_list a{
+    text-decoration: none;
+    color: black;
+}
+
+.b_list .fa{
+    font-size: 5em;
+    color: rgb(42, 88, 42);
+}
+.b_list p{
+    margin: 7% 0%;
+}
+
+.b_list div{
+    height: 7%;
+    width: 60%;
+    margin: 8% auto;
+    border: 1px black solid;
+    border-radius: 0.7em;
+    padding-top: 5%;
+    background-color: #317EF3;
+}
+
+.b_list div>a{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.box .page_nav{
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

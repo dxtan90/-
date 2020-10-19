@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>装备基本信息管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/basicInformation.css">
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'basicInformation')"></div>
+<div class="main" style="height: 600px">
+    <div class="header" style="font-size: 25px">人员基本信息管理</div>
+    <div class="header" style="background-color:#EEEEEE">
+        <table style="height: 100px;width: 960px">
+            <tr>
+                <td>
+                    <a href="/Admin/basicInformation/addUser"><input type="button" value="新建用户" style="width: 120px;height: 40px"></a>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <table style="height: 260px;width: 800px; border-collapse: collapse" border="1" align="center">
+        <tr>
+            <td>用户名</td>
+            <td>用户编号</td>
+            <td>所属部门</td>
+            <td>工作岗位</td>
+            <td>职务</td>
+            <td colspan="3">操作</td>
+        </tr>
+        <th:block th:each="d:${data}">
+            <tr th:each="info:${d.getArmspeoples()}">
+                <td th:text="${info.getRyname()}">xxx</td>
+                <td th:text="${info.getRyid()}">123456</td>
+                <td th:text="${d.getDepname()}">ooa</td>
+                <td th:text="${info.getPosition()}">2020.04.12</td>
+                <td th:text="${info.getTitle()}">管理员</td>
+                <td><a th:href="@{'/resetPwd?Ryid='+${info.getRyid()}}">重置密码</a> </td>
+                <td><a th:href="@{'/Admin/basicInformation/delete?ryid='+${info.getRyid()}}">删除该用户</a> </td>
+                <td><a th:href="@{'/Admin/basicInformation/find?ryid='+${info.getRyid()}}">查看详细信息</a> </td>
+            <tr/>
+        </th:block>
+    </table>
+    <div class="mainTurn" style=>
+    </div>
+
+</div>
+<div class="main" style="height: 600px">
+    <div class="header" style="font-size: 25px">装备基本信息管理</div>
+    <div class="header" style="background-color:#EEEEEE">
+        <table style="height: 100px;width: 960px">
+        <tr>
+
+            <td>
+                <a href="/Admin/basicInformation/addEquip" >
+                    <button type="button" style="width: 120px;height: 40px">新建装备信息</button>
+                </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <table style="height: 250px;width: 800px; border-collapse: collapse" border="1" align="center">
+        <tr>
+            <td>装备名称</td>
+            <td>装备编号</td>
+            <td>装备类型</td>
+            <td>规格型号</td>
+            <td>计量单位</td>
+            <td colspan="2">操作</td>
+        </tr>
+        <tr th:each="e:${eqs}">
+            <td th:text="${e.getZbname()}">东风xxx</td>
+            <td th:text="${e.getZbid()}">123456789</td>
+            <td th:text="${e.getZbkind()}">导弹</td>
+            <td th:text="${e.getZbspec()}">20002020</td>
+            <td th:text="${e.getZbunit()}">50'000'000</td>
+            <td><a th:href="@{'/Admin/basicInformation/changeZbidInfo?zbid='+${e.getZbid()}}">修改</a> </td>
+            <td><a th:href="@{'/Admin/basicInformation/deleteZbidInfo?zbid='+${e.getZbid()}}">删除</a> </td>
+        </tr>
+
+    </table>
+    <div class="mainTurn">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": ""
+  },
+  "logoInfo": {
+    "title": "装备管理系统",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "基本信息管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "人员基本信息",
+          "icon": "fa fa-address-book",
+          "href": "/Admin/basicInformation",
+          "target": "_self",
+          "child": []
+        },
+        {
+          "title": "装备基本信息",
+          "icon": "fa fa-address-book",
+          "href": "",
+          "target": "_self",
+          "child": []
+        }
+      ]
+    },
+    {
+      "title": "装备仓库管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "仓库信息管理",
+          "icon": "fa fa-address-book",
+          "href": "/Admin/warehouseManagement",
+          "target": "_self",
+          "child": []
+        },
+        {
+          "title": "装备维修管理",
+          "icon": "fa fa-address-book",
+          "href": "",
+          "target": "_self",
+          "child": []
+        }
+      ]
+    },
+    {
+      "title": "装备经费管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "入账信息管理",
+          "icon": "fa fa-address-book",
+          "href": "/Admin/budgetInformation",
+          "target": "_self",
+          "child": []
+        },
+        {
+          "title": "出账信息管理",
+          "icon": "fa fa-address-book",
+          "href": "",
+          "target": "_self",
+          "child": []
+        },
+        {
+          "title": "出入账信息管理",
+          "icon": "fa fa-address-book",
+          "href": "",
+          "target": "_self",
+          "child": []
+        }
+      ]
+    },
+    {
+      "title": "装备资料管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "装备资料管理",
+          "icon": "fa fa-address-book",
+          "href": "/Admin/documentManagement",
+          "target": "_self",
+          "child": []
+        },
+        {
+          "title": "装备借阅管理",
+          "icon": "fa fa-address-book",
+          "href": "",
+          "target": "_self",
+          "child": []
+        }
+      ]
+    }
+  ]
+}

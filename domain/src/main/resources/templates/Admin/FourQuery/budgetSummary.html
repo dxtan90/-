@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>经费统计</title>
+    <link rel="stylesheet" href="/css/equipmentCollect.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/UserTop.css" type="text/css"/>
+    <script src="/webjars/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+<div th:insert="common/UserTop.html::topInfoBar"></div>
+<div th:insert="common/UserTop.html::topNavAdmin(activeUri = 'statisticalQuery')"></div>
+<!--经费统计-->
+<div class="equipment_collect">
+    <span class="ec_top_show">经费汇总表</span>
+    <div class="ec_find_vo">
+        <span class="ec_find_vo_show">筛选:</span>
+        <div class="ec_find_vo_function">
+            <span class="ec_find_vo_function_show">收支信息:</span>
+            <select class="ec_find_vo_function_select" id="inoutSelect">
+                <option>全部</option>
+                <option>只看入账</option>
+                <option>只看出账</option>
+            </select>
+        </div>
+        <div class="ec_find_vo_function">
+            <span class="ec_find_vo_function_show">操作时间:</span>
+            <select class="ec_find_vo_function_select" id="timeSelect">
+                <option>全部</option>
+                <option>近一个周</option>
+                <option>近一个月</option>
+            </select>
+        </div>
+    </div>
+    <div class="ec_main_show">
+        <div class="ec_main_content">
+            <table class="ec_main_content_table" id="tableShow">
+                <tr class="table_head_tr">
+                    <th class="table_th_td">开支编号</th>
+                    <th class="table_th_td">经办日期</th>
+                    <th class="table_th_td">明细编号</th>
+                    <th class="table_th_td">金额</th>
+                    <th class="table_th_td">经办人</th>
+                    <th class="table_th_td">批准人</th>
+                    <th class="table_th_td">费用摘要</th>
+                    <th class="table_th_td">备注</th>
+                </tr>
+                <tr class="table_main_tr" th:each="info:${infos.getLayInfo()}">
+                    <td class="table_th_td" th:text="${info.getId()}">001</td>
+                    <td class="table_th_td" th:text="${info.getIndate()}">2020/5/16</td>
+                    <td class="table_th_td" th:text="${info.getItemid()}">DDC_0123</td>
+                    <td class="table_th_td" th:text="${info.getSSum()}">-1000000000</td>
+                    <td class="table_th_td" th:text="${info.getRyname()}">张三</td>
+                    <td class="table_th_td" th:text="${info.getRynamel()}">李四</td>
+                    <td class="table_th_td" th:text="${info.getMemo()}">东风快递投入</td>
+                    <td class="table_th_td" th:text="${info.getSource()}">用于火箭军的东风快递</td>
+                </tr>
+            </table>
+        </div>
+        <div class="ec_main_button_vo">
+            <div class="ec_main_button_vo_item1">
+                <span id="now_page">第1页</span>
+                <span id="max_page" th:text="'共'+${infos.getPages()}+'页'">共x页</span>
+            </div>
+            <div class="ec_main_button_vo_item1">
+                <a class="ec_main_button_vo_item_point" id="pre" style="color:grey">上一页</a>
+                <span>/</span>
+                <a class="ec_main_button_vo_item_point" id="next">下一页</a>
+            </div>
+
+            <div class="ec_main_button_vo_item2">
+                <a class="ec_main_button_vo_item_point" id="first" style="color:grey">返回首页</a>
+                <a class="ec_main_button_vo_item_point" id="last">尾页</a>
+                <select class="ec_main_button_vo_select" id="pageSelect">
+                    <option th:each="page:${#numbers.sequence(1,infos.getPages())}" th:text="${page}" class="select_page">1</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/FourQuery/BudgetSummary.js"></script>
+</body>
+</html>

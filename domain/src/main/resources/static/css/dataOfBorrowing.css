@@ -1,0 +1,30 @@
+.botB{
+    position: relative;
+    top: 20px;
+    left: 75px;
+}
+.botC{
+    position: relative;
+    top: 20px;
+    left: 120px;
+}
+.radio{
+    width: 300px;
+    height: 30px;
+    background-color: #cccccc;
+    text-align: center;
+    line-height: 30px;
+}
+#radioB{
+    position: relative;
+    top: -10px;
+    left: 465px;
+}
+.mainTable1{
+    position: relative;
+    top: 10px;
+}
+.mainTurn1{
+    position: relative;
+    top: -45px;
+}
